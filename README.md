@@ -6,8 +6,8 @@ human-reviewed issue triage proposals.
 
 **The runtime uses deterministic rules, not an LLM. It never applies actions to
 GitHub.** M1 provides an offline prototype; M2 adds public, unauthenticated GitHub
-reads. M3 prepares documentation, CI and a publication audit. Publication itself
-has not been performed.
+reads. M3 prepares documentation, CI and a publication audit. The project has been 
+published on GitHub and is publicly available under the MIT License.
 
 ## Features
 
@@ -211,7 +211,7 @@ boundary. Issue text cannot supply approval. Local audit is minimal and neither
 tamper-evident, rotated nor transactional; earlier events may remain if a later
 write fails. This is a local CLI, not a multi-user filesystem sandbox.
 
-## Tests and prepared CI
+## Tests and CI
 
 ```bash
 python3 -m unittest discover -v
@@ -230,7 +230,9 @@ runner's preinstalled Python. It fetches public source anonymously before tests;
 that setup requires network access on a future hosted runner. Tests and help
 commands make no API calls. No dependencies are installed and no remote writes
 or artifacts are published. Private repositories are intentionally skipped.
-**Remote CI has not run or been verified.**
+**GitHub Actions CI: PASS.** 
+The automated test workflow completed successfully on the public repository, 
+confirming that the test suite runs in the GitHub-hosted environment.
 
 ## Known limitations
 
@@ -241,8 +243,8 @@ or artifacts are published. Private repositories are intentionally skipped.
 - Minimal Linux-oriented filesystem behavior; other operating systems are untested.
 - Temporary replay/approval state and minimal auditing need redesign before any
   production service or write-capable integration.
-- Hosted CI and compatibility beyond the locally tested Python version are pending.
-
+- The GitHub Actions workflow has passed on a hosted Linux runner. Compatibility with other operating systems and environments remains unverified.
+  
 ## Development transparency and distribution
 
 ChatGPT and the Astra/Codex development workflow assisted with design, code,
@@ -261,8 +263,7 @@ Publication candidates are listed exactly in
 [M3 publication audit](docs/M3_PUBLICATION_AUDIT.md) for security findings,
 validation and outstanding decisions. Historical [M1](docs/M1_EXECUTION_REPORT.md)
 and [M2](docs/M2_EXECUTION_REPORT.md) reports retain their milestone context.
-Publication requires separate human authorization; M3 has not committed or pushed
-anything or created a remote repository.
+The project was subsequently approved and published on GitHub. The historical M3 audit and precommit reports document the state of the project before publication.
 
 The [M3.1 precommit report](docs/M3_FINAL_PRECOMMIT_REPORT.md) records the final
 27-file inventory, approved license, local checks and Git initialization pending
