@@ -1,0 +1,47 @@
+# Local runtime and audit artifacts
+.local/
+*.log
+*.jsonl
+*.db
+*.sqlite
+*.sqlite3
+*.tmp
+*.bak
+
+# Python environments, caches, and build products
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Credentials, agent state, and local-only configuration
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+.netrc
+.aws/
+.ssh/
+.codex/
+.agents/
+secrets/
+credentials/
+private/
+
+# Editor and operating system artifacts
+.vscode/
+.idea/
+.DS_Store
+*~

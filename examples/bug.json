@@ -1,0 +1,5 @@
+{
+  "number": 101,
+  "title": "Crash when exporting a fictional report",
+  "body": "Steps to reproduce: open a sample report and select Export.\nVersion: 0.0.1-demo\nExpected: a sample file. Actual: an error."
+}

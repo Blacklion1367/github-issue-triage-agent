@@ -1,0 +1,36 @@
+name: Offline tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+# No token permissions; no secrets or tokens are passed to any step.
+permissions: {}
+
+jobs:
+  unittest:
+    # Anonymous checkout intentionally supports public repositories only.
+    if: github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      GIT_TERMINAL_PROMPT: "0"
+      GIT_CONFIG_NOSYSTEM: "1"
+      GIT_CONFIG_GLOBAL: /dev/null
+    steps:
+      - name: Fetch public source without credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -c core.hooksPath=/dev/null init .
+          git -c credential.helper= -c core.hooksPath=/dev/null -c http.followRedirects=false fetch --depth=1 --no-tags "https://github.com/${GITHUB_REPOSITORY}.git" "${GITHUB_SHA}"
+          git -c core.hooksPath=/dev/null checkout --detach FETCH_HEAD
+      - name: Check preinstalled Python
+        run: python3 --version
+      - name: Run offline unit tests
+        run: python3 -m unittest discover -v
+      - name: Check CLI help without querying GitHub
+        run: |
+          python3 -m triage_agent --help
+          python3 -m triage_agent.github_cli --help
